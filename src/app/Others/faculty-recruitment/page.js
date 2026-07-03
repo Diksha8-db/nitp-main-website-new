@@ -30,7 +30,7 @@ const RecruitmentProcess = () => {
        <tr className="border-b border-gray-100 hover:bg-red-50 transition-colors">
                 <td className="text-left px-6 py-4 text-gray-800">
                   <p className="leading-relaxed">
-                 Advertisement for Faculty Recruitment to the Post of Assistant Professor (Grade II), Pay Level 11 (AGP: ₹7,000)
+                 Advertisement for Faculty Recruitment to the Post of Assistant Professor (Grade II), Pay Level 11 (AGP: ₹7,000) (Only for Internal Faculty)
                   </p>
                 </td>
                 <td className="text-center px-6 py-4">
@@ -43,6 +43,31 @@ const RecruitmentProcess = () => {
                       <FileText className="w-4 h-4" />
                       Download
                     </a>
+                        
+                    <Link
+                      href="https://drive.google.com/file/d/1eqqMU4ctlceBvaED1mFNBu3HfIOZqczL/view?usp=sharing"
+                      className="inline-flex items-center gap-2 bg-red-900 text-white px-4 py-2 rounded-md hover:bg-red-800 transition-colors text-sm font-medium w-40"
+                    >
+                      <FileText className="w-4 h-4" />
+                      SOP
+                    </Link>
+                        
+                      <Link
+                      href="https://forms.gle/JUFniPtJBgM3ypyQ8"
+                      className="inline-flex items-center gap-2 bg-red-900 text-white px-4 py-2 rounded-md hover:bg-red-800 transition-colors text-sm font-medium w-40"
+                    >
+                      <FileText className="w-4 h-4" />
+                      Apply Here
+                    </Link>
+                        
+                     <Link
+                      href="/Others/faculty-recruitment/annexures1"
+                      className="inline-flex items-center gap-2 bg-red-900 text-white px-4 py-2 rounded-md hover:bg-red-800 transition-colors text-sm font-medium w-40"
+                    >
+                      <FileText className="w-4 h-4" />
+                      Annexures
+                    </Link>    
+                        
                   </div>
                 </td>
               </tr>
