@@ -30,7 +30,7 @@ const RecruitmentProcess = () => {
        <tr className="border-b border-gray-100 hover:bg-red-50 transition-colors">
                 <td className="text-left px-6 py-4 text-gray-800">
                   <p className="leading-relaxed">
-                  Advertisement for Faculty Recruitment for the post of Assistant Professor (Grade-II) Pay Level-11/AGP: Rs. 7000
+                 Advertisement for Faculty Recruitment to the Post of Assistant Professor (Grade II), Pay Level 11 (AGP: ₹7,000)
                   </p>
                 </td>
                 <td className="text-center px-6 py-4">
