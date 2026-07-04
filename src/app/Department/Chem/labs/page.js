@@ -57,8 +57,8 @@ const mainLabSections = [
       ],
       align:"left",
       images: [
+        { src: "/chem-labs/reaction-engineering-lab.jpg", alt: "Heat Transfer Lab and Fluid Flow Operation Lab" },
         { src: "/chem-labs/research-hall.jpg", alt: "Instrument Lab " },
-        { src: "/chem-labs/instrument-collage-2.jpg", alt: "Instrument Lab Equipments" }
       ],
     },
     {
@@ -72,7 +72,7 @@ const mainLabSections = [
         }
       ],
       images: [
-        { src: "/chem-labs/reaction-engineering-lab.jpg", alt: "Heat Transfer Lab and Fluid Flow Operation Lab" },
+        { src: "/chem-labs/instrument-collage-2.jpg", alt: "Instrument Lab Equipments" },
         { src: "/chem-labs/reaction-vessel.jpg", alt: "Heat Transfer Lab and Fluid Flow Operation Lab Equipment" }
       ],
     },
@@ -95,12 +95,13 @@ const mainLabSections = [
 ];
 
 const researchAreas = [
-  "Green Synthesis Lab (Dr. Tasneem Parvin)",
-  "Applied Chemistry Lab (Dr. Subrata Das)",
-  "Biophysical Chemistry Lab (Dr. Niki Sweta Jha)",
-  "Inorganic Lab (Dr. Mukesh Choudhary)",
-  "Supramolecular Materials Lab (Dr. Suvankar Dasgupta)",
-  "Synthetic Research Lab (Dr. Khursheed Ahmad)",
+  "Green Synthesis Lab",
+  "Biophysical Chemistry Lab",
+  "Inorganic Lab",
+  "Applied Chemistry Lab",
+  "Supramolecular Materials Lab",
+  "Synthetic Research Lab",
+  "Physical Chemistry (Expt.) Lab",
 ];
 
 function LabSection({ title, description, image, imageAlt, attachments, align = "right", groups, images }) {
@@ -111,7 +112,7 @@ function LabSection({ title, description, image, imageAlt, attachments, align = 
     <section className="mb-12 rounded-3xl border border-red-100 bg-white/90 shadow-[0_18px_50px_rgba(127,29,29,0.08)] backdrop-blur-sm">
       <div className={`grid gap-8 px-5 py-6 sm:px-8 sm:py-6 lg:px-10 lg:py-8 ${imageList.length ? `lg:grid-cols-[1.15fr_0.85fr] ${isImageLeft ? "lg:[direction:rtl]" : ""}` : "grid-cols-1"}`}>
         <div className={`space-y-4 ${isImageLeft && imageList.length ? "lg:[direction:ltr]" : ""}`}>
-          <h3 className="text-2xl font-bold text-red-900 sm:text-3xl">{title}</h3>
+          {title && <h3 className="text-2xl font-bold text-red-900 sm:text-3xl">{title}</h3>}
           <p className="whitespace-pre-line text-justify text-sm leading-7 text-slate-700 sm:text-base">{description}</p>
           {attachments?.length ? (
             <div className="grid gap-3 sm:grid-cols-2">
@@ -245,13 +246,15 @@ export default function ChemLabsPage() {
 
         <div className="mx-auto max-w-7xl">
           {/* <TeachingLabsSection /> */}
+          <h2 className="text-3xl font-extrabold text-red-900 mt-8 mb-8 border-b-2 border-red-100 pb-2">Teaching Labs:</h2>
 
           {mainLabSections.map((section) => (
             <LabSection key={section.title} {...section} />
           ))}
 
+          <h2 className="text-3xl font-extrabold text-red-900 mt-16 mb-8 border-b-2 border-red-100 pb-2">Research Labs:</h2>
+
           <LabSection
-            title="Research Labs"
             description="The Research Labs support faculty and student research projects in various areas of Chemical Science and Technology, providing facilities for synthesis, analysis, and advanced experimentation."
             groups={researchAreas}
           />
