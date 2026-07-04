@@ -25,18 +25,87 @@ const RecruitmentProcess = () => {
               </tr>
             </thead>
             <tbody>
-  
-    
-          <tr className="border-b border-gray-100 hover:bg-red-50 transition-colors">
+
+
+       <tr className="border-b border-gray-100 hover:bg-red-50 transition-colors">
                 <td className="text-left px-6 py-4 text-gray-800">
                   <p className="leading-relaxed">
-                 List of Candidates Shortlisted for Stage-II Presentation – Assistant Professor (Grade-II), Pay Level-10/AGP 6000, Department of Computer Science & Engineering
+                 Advertisement for Faculty Recruitment to the Post of Assistant Professor (Grade II), Pay Level 11 (AGP: ₹7,000) (Only for Internal Faculty)
                   </p>
                 </td>
                 <td className="text-center px-6 py-4">
                   <div className="flex flex-col items-center gap-2">
                     <a
-                      href="https://drive.google.com/file/d/1zWg5XUD5BlUbdfD5vnEfBDczNhHMJITY/view?usp=sharing"
+                      href="https://drive.google.com/file/d/1xE7gejub95S_fzdYn3tTaLy1DF_4Nlrv/view?usp=sharing"
+                      download
+                      className="inline-flex items-center gap-2 bg-red-900 text-white px-4 py-2 rounded-md hover:bg-red-800 transition-colors text-sm font-medium w-40"
+                    >
+                      <FileText className="w-4 h-4" />
+                      Download
+                    </a>
+                        
+                    <Link
+                      href="https://drive.google.com/file/d/1eqqMU4ctlceBvaED1mFNBu3HfIOZqczL/view?usp=sharing"
+                      className="inline-flex items-center gap-2 bg-red-900 text-white px-4 py-2 rounded-md hover:bg-red-800 transition-colors text-sm font-medium w-40"
+                    >
+                      <FileText className="w-4 h-4" />
+                      SOP
+                    </Link>
+                        
+                      <Link
+                      href="https://forms.gle/JUFniPtJBgM3ypyQ8"
+                      className="inline-flex items-center gap-2 bg-red-900 text-white px-4 py-2 rounded-md hover:bg-red-800 transition-colors text-sm font-medium w-40"
+                    >
+                      <FileText className="w-4 h-4" />
+                      Apply Here
+                    </Link>
+                        
+                     <Link
+                      href="/Others/faculty-recruitment/annexures1"
+                      className="inline-flex items-center gap-2 bg-red-900 text-white px-4 py-2 rounded-md hover:bg-red-800 transition-colors text-sm font-medium w-40"
+                    >
+                      <FileText className="w-4 h-4" />
+                      Annexures
+                    </Link>    
+                        
+                  </div>
+                </td>
+              </tr>
+
+                        
+
+       <tr className="border-b border-gray-100 hover:bg-red-50 transition-colors">
+                <td className="text-left px-6 py-4 text-gray-800">
+                  <p className="leading-relaxed">
+                  Schedule for Presentation of the candidates Shortlisted for Stage-II assessment for the post of Assistant Professor (Grade-II) Pay Level-10/AGP: Rs. 6000 in various Departments 
+                  </p>
+                </td>
+                <td className="text-center px-6 py-4">
+                  <div className="flex flex-col items-center gap-2">
+                    <a
+                      href="https://drive.google.com/file/d/1u1f37XApCTQ9X7Y55V3H4yNyJ2XRCLhD/view?usp=sharing"
+                      download
+                      className="inline-flex items-center gap-2 bg-red-900 text-white px-4 py-2 rounded-md hover:bg-red-800 transition-colors text-sm font-medium w-40"
+                    >
+                      <FileText className="w-4 h-4" />
+                      Download
+                    </a>
+                  </div>
+                </td>
+              </tr>
+
+                        
+    
+          <tr className="border-b border-gray-100 hover:bg-red-50 transition-colors">
+                <td className="text-left px-6 py-4 text-gray-800">
+                  <p className="leading-relaxed">
+                 List of candidates Shortlisted for Stage-ll assessment (Presentation) for the post of Assistant Professor (Grade-ll) Pay Leve!-10/AGP: Rs. 6000 in various Departments 
+                  </p>
+                </td>
+                <td className="text-center px-6 py-4">
+                  <div className="flex flex-col items-center gap-2">
+                    <a
+                      href="https://drive.google.com/file/d/1xoxWRtaMgWvx3fZ7j-vgfG5FdRNz2zhV/view?usp=drive_link"
                       download
                       className="inline-flex items-center gap-2 bg-red-900 text-white px-4 py-2 rounded-md hover:bg-red-800 transition-colors text-sm font-medium w-40"
                     >
