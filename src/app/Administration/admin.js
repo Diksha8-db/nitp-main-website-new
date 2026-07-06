@@ -513,11 +513,6 @@ const ServiceUNIT = [
   designation: " E&ICT Academy Phase II",
  },
 
- {
-  name: "Prof. Samrat Mukherjee",
-  type: "Prof. In-charge",
-  designation: "Training and Placement",
- },
 
 {
   name: "Prof. Bharat Gupta",
@@ -547,11 +542,7 @@ const ServiceUNIT = [
   type: "Associate Professor",
   designation: " PI - Library"
 },
-{
-  name: "Dr. J. P. Singh",
-  type: "Associate Professor",
-  designation: "PI-MIS"
-},
+
 {
   name: "Dr. Vimlesh Verma",
   type: "Associate Professor",
@@ -560,8 +551,25 @@ const ServiceUNIT = [
 {
   name: "Dr. Amit Kumar Singh",
   type: "Associate Professor",
-  designation: "PI – International Affairs; Chief Vigilance Officer, NIT Patna"
+  designation: "PI – International Affairs; Chief Vigilance Officer, ERP NIT Patna"
 },
+  {
+  name: "Dr. Suddhasil De",
+  type: "Assistant Professor",
+  designation: "Co-PI(ERP)"
+},
+  
+{
+  name: "Dr. B. Balaji Naik",
+  type: "Assistant Professor",
+  designation: "Co-PI(ERP)"
+},
+  
+ {
+  name: "Prof. Samrat Mukherjee",
+  type: "Prof. In-charge",
+  designation: "Training and Placement",
+ }, 
   
 {
   name: "Dr. Chetan Kumar Hirwani",
@@ -576,20 +584,10 @@ const ServiceUNIT = [
 
 
 {
-  name: "Dr. B. Balaji Naik",
-  type: "Assistant Professor",
-  designation: "PI – Webservice"
-},
-{
   name: "Dr. Om Ji Shukla",
   type: "Assistant Professor",
   designation: "PI – E-Cell; Coordinator – Unnat Bharat"
 },
-// {
-//   name: "Dr. Gagan Deep Meena",
-//   type: "Assistant Professor",
-//   designation: "Co PI – EMU; Coordinator - NSS"
-// },
 
   {
   name: "Dr.Mukesh Kumar",
