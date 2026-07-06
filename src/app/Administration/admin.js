@@ -530,13 +530,7 @@ const ServiceUNIT = [
   type: "Nodal Officer – IPR,Nodal Officer – IoE,Nodal Officer – BIS",
   name: "Prof. Amit Kumar",
  },
-  {
-  name: "Dr. Ajay Kumar",
-  type: "Associate Professor",
-  designation: " Asst. PI (T&P)"
-},
 
- 
 {
   name: "Dr. Shailendra K. Mandal",
   type: "Associate Professor",
@@ -546,12 +540,12 @@ const ServiceUNIT = [
 {
   name: "Dr. Vimlesh Verma",
   type: "Associate Professor",
-  designation: " PI – Electrical Maintenance Unit (EMU)"
+  designation: " PI – EMU"
 },
 {
   name: "Dr. Amit Kumar Singh",
   type: "Associate Professor",
-  designation: "PI – International Affairs; Chief Vigilance Officer, ERP NIT Patna"
+  designation: "PI – International Affairs; Chief Vigilance Officer, ERP"
 },
   {
   name: "Dr. Suddhasil De",
@@ -576,6 +570,12 @@ const ServiceUNIT = [
   type: "Assistant Professor",
   designation: " T & P Officer"
 },
+    {
+  name: "Dr. Ajay Kumar",
+  type: "Associate Professor",
+  designation: " Asst. PI (T&P)"
+},
+  
 {
   name: "Dr. S K Tripathy",
   type: "Assistant Professor",
