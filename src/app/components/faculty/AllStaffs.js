@@ -12,23 +12,39 @@ const AllStaffs = () => {
     const [otheremployee, setotheremployee] = useState([]);
     const [error, setError] = useState(false);
     const [loading, setloading] = useState(false);
-    const api = `${process.env.NEXT_PUBLIC_BACKEND_API_URL}/api/faculty?type=all`;
+    // const api = `${process.env.NEXT_PUBLIC_BACKEND_API_URL}/api/faculty?type=all`;
     useEffect(() => {
         const fetchFaculty = async () => {
             try {
-                setloading(true)
-                const { data } = await axios.get(api);
-                // console.log(data)
-                const filteredFaculty = data.data.filter(
+                setloading(true);
+
+                let allFaculty = [];
+                let page = 1;
+                let totalPages = 1;
+
+                do {
+                    const { data } = await axios.get(
+                        `${process.env.NEXT_PUBLIC_BACKEND_API_URL}/api/faculty?type=all&page=${page}&limit=50`
+                    );
+
+                    allFaculty.push(...data.data);
+                    totalPages = data.totalPages;
+                    page++;
+                } while (page <= totalPages);
+
+                const filteredFaculty = allFaculty.filter(
                     (item) => item.department === "Other Employees"
                 );
+
                 setotheremployee(filteredFaculty);
-                setloading(false)
             } catch (err) {
                 console.log(err);
                 setError(true);
+            } finally {
+                setloading(false);
             }
         };
+
         fetchFaculty();
     }, []);
     if (error) {
