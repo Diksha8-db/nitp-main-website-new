@@ -1,89 +1,80 @@
-import { cache } from "react";
-import { mapClubData, mapClubsData } from "../utils/clubHelpers";
+import axios from "axios";
 
 const BACKEND_API_URL = process.env.NEXT_PUBLIC_BACKEND_API_URL;
+const BASE_URL = BACKEND_API_URL.replace(/\/$/, "");
+const REQUEST_TIMEOUT = 10_000; // 10 seconds
 
-const REQUEST_TIMEOUT = 10000; // 10s
-
-function getClubApiUrl() {
-  const baseUrl = BACKEND_API_URL.replace(/\/$/, "");
-  return `${baseUrl}/api/club`;
-}
-function getClubApiUrlById(type) {
-  const baseUrl = BACKEND_API_URL.replace(/\/$/, "");
-  return `${baseUrl}/api/club?id=${encodeURIComponent(type)}`;
-}
-
-async function fetchWithTimeout(url, options = {}) {
-  const controller = new AbortController();
-
-  const timeoutId = setTimeout(() => {
-    controller.abort();
-  }, REQUEST_TIMEOUT);
-
-  try {
-    const response = await fetch(url, {
-      ...options,
-      signal: controller.signal,
-    });
-
-    if (!response.ok) {
-      throw new Error(`API Error: ${response.status} ${response.statusText}`);
-    }
-
-    return response;
-  } catch (error) {
-    if (error.name === "AbortError") {
-      throw new Error(`Request timeout after ${REQUEST_TIMEOUT}ms`);
-    }
-
-    throw error;
-  } finally {
-    clearTimeout(timeoutId);
-  }
-}
-
-export const getClubs = cache(async () => {
-  try {
-    const response = await fetchWithTimeout(
-      getClubApiUrl(),
-      {
-        next: { revalidate: 0 },
-      }
-    );
-    const data = await response.json()    
-    return mapClubsData(data);
-
-  } catch (error) {
-    console.error("Get Clubs error:", {
-      message: error.message,
-      api: getClubApiUrl("all"),
-    });
-
-    return [];
-  }
+// Create a pre-configured Axios instance
+const api = axios.create({
+  baseURL: BASE_URL,
+  timeout: REQUEST_TIMEOUT,
 });
 
-export const getClubBySlug = cache(async(slug) => {
-  if (!slug) return null;
-
+/**
+ * Safely handles the axios request, uniformly logs errors, and returns data.
+ */
+async function handleFetch(config, fallbackValue, errorContext = {}) {
   try {
-    const response = await fetchWithTimeout(
-      getClubApiUrlById(slug),
-      {
-        next: { revalidate:0 }, // 5 min cache
-      }
-    );
-    const data = await response.json();
-    return mapClubData(data);
-
+    const response = await api(config);
+    return response.data;
   } catch (error) {
-    console.error("Get Club by Id error:", {
-      slug,
-      message: error.message,
-      api: getClubApiUrl(slug),
-    });
+    let errorMessage = error.message;
 
-    return null;
+    if (error.code === "ECONNABORTED" || error.message.includes("timeout")) {
+      errorMessage = `Request timed out after ${REQUEST_TIMEOUT}ms`;
+    } else if (error.response) {
+      errorMessage = `API request failed (${error.response.status} ${error.response.statusText})`;
+    }
+
+    console.error("API Error:", {
+      url: config.url,
+      message: errorMessage,
+      ...errorContext,
+    });
+    
+    return fallbackValue;
   }
-});
+}
+
+// --- Public API Functions ---
+// Fetches all clubs.
+export async function getClubs() {
+  return await handleFetch({ url: "/api/club", params: { type: "all" } }, []);
+}
+
+// Fetches a specific club by its ID and explicitly arranges its member data by most recent session.
+export async function getClub(id) {
+  if (!id) return null;
+  const clubData = await handleFetch({ url: "/api/club", params: { type: id } }, null, { id });
+
+  // Arrange member session data if present
+  if (clubData && clubData.members && typeof clubData.members === "object") {
+    const sortedMembers = {};
+    
+    Object.keys(clubData.members)
+      .sort((a, b) => b.localeCompare(a, undefined, { numeric: true, sensitivity: 'base' }))
+      .forEach((key) => {
+        sortedMembers[key] = clubData.members[key];
+      });
+
+    clubData.members = sortedMembers;
+  }
+
+  return clubData;
+}
+
+// Fetches all Events of a specific club by its ID.
+export async function getEvents(clubId) {
+  if (!clubId) return [];
+
+  const data = await handleFetch({ url: "/api/club/events", params: { club: clubId } }, { data: [] }, { clubId });
+  return data?.data || [];
+}
+
+// Fetches a specific Event by its ID.
+export async function getEvent(id) {
+  if (!id) return null;
+
+  const data = await handleFetch({ url: "/api/club/event", params: { id } }, null, { id });
+  return data?.data || null;
+}

@@ -7,10 +7,10 @@ export default async function ClubsPage({ searchParams }) {
   const params = await searchParams;
   const activeCategory = params?.category;
 
-  const clubData = await getClubs();
+  const clubs = await getClubs();
 
-  const categories = [...new Set(clubData.map((club) => club.category).filter(Boolean)),].sort();
-  const displayedClubs = activeCategory ? clubData.filter((club) => club.category === activeCategory) : clubData;
+  const categories = [...new Set(clubs.map((club) => club.category).filter(Boolean)),].sort();
+  const displayedClubs = activeCategory ? clubs.filter((club) => club.category === activeCategory) : clubs;
 
   return (
     <>
@@ -66,12 +66,12 @@ export default async function ClubsPage({ searchParams }) {
           displayedClubs.map((club) => (
             <Link
               key={club.id}
-              href={`/Student/Clubs/${club.slug}`}
-              className="mx-auto flex min-h-[180px] w-full max-w-[300px] flex-col items-center justify-center gap-4 rounded-lg border border-red-900/15 bg-white/85 px-[14px] py-[px] text-center no-underline shadow-[0_14px_34px_rgba(127,29,29,0.08)] transition hover:-translate-y-1 hover:border-red-900/35 hover:shadow-[0_20px_42px_rgba(127,29,29,0.14)] md:mx-0 md:min-h-[158px] md:max-w-none md:px-3 md:py-[18px]"
+              href={`/Student/Clubs/${club.id}`}
+              className="mx-auto flex min-h-[180px] w-full max-w-[300px] flex-col items-center justify-center gap-4 rounded-lg border border-red-900/15 bg-white/85 px-[14px] py-[2px] text-center no-underline shadow-[0_14px_34px_rgba(127,29,29,0.08)] transition hover:-translate-y-1 hover:border-red-900/35 hover:shadow-[0_20px_42px_rgba(127,29,29,0.14)] md:mx-0 md:min-h-[158px] md:max-w-none md:px-3 md:py-[18px]"
             >
               <span className="grid h-[86px] w-[86px] place-items-center rounded-lg bg-[linear-gradient(145deg,#ffffff,#fff1f1)] shadow-[inset_0_0_0_6px_rgba(255,255,255,0.75)]">
                 <img
-                  src={club.logoUrl || club.logo || "/images/default-club.png"}
+                  src={club.logo || "/images/default-club.png"}
                   alt={`${club.name} logo`}
                   loading="lazy"
                   className="h-[70px] w-[70px] rounded-[7px] object-cover"
@@ -85,7 +85,7 @@ export default async function ClubsPage({ searchParams }) {
           ))
         ) : (
           <div className="col-span-full py-10 text-center text-red-600 font-semibold text-xl">
-            No clubs found in this category dhsa.
+            No clubs found in this category.
           </div>
         )}
       </section>
