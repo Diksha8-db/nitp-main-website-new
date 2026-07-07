@@ -85,7 +85,7 @@ export default async function ClubsPage({ searchParams }) {
           ))
         ) : (
           <div className="col-span-full py-10 text-center text-red-600 font-semibold text-xl">
-            No clubs found in this category.
+            No clubs found in this category dhsa.
           </div>
         )}
       </section>

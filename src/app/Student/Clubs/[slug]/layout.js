@@ -3,12 +3,14 @@ import { notFound } from "next/navigation";
 import ClubSidebar from "./ClubSidebar";
 import ClubProvider from "./ClubProvider";
 import { getClubBySlug } from "../services/clubService";
+import { log } from "node:console";
 
 const Layout = async ({ children, params }) => {
   const { slug } = await params;
+  console.log(slug)
   const club = await getClubBySlug(slug);
 
-  if (!club?.slug) notFound();
+  if (!club?.id) notFound();
 
   return (
     <ClubProvider club={club}>

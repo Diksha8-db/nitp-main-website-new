@@ -68,7 +68,6 @@ import { FiMenu } from "react-icons/fi";
 import { AiOutlineClose, AiOutlineMenu, AiOutlineOpen } from "react-icons/ai";
 import Script from "next/script";
 import { getClubs } from "../../Student/Clubs/services/clubService"
-import { icon } from "@fortawesome/fontawesome-svg-core";
 
 //List of all nav items
 
@@ -782,7 +781,7 @@ export default function Navbar() {
   
           const clubChildren = clubs.map(club => ({
             label: club.name,
-            link:  `/Student/Clubs/${club.slug}`,
+            link:  `/Student/Clubs/${club.id}`,
             iconImage: club.logo || "",
           }));
   

@@ -3,16 +3,20 @@ function compact(values) {
   return values.filter(Boolean);
 }
 
-function mapPerson(person) {
-  if (!person || typeof person !== "object") {
-    person = {};
-  }
-
+function mapPerson(person = {}) {
   return {
     name: person.name || "",
     email: person.email || "",
     phone: person.phone || "",
     department: person.department || "",
+    image: person.image || "",
+  };
+}
+
+function mapMember(member = {}) {
+  return {
+    name: member.name || "",
+    image: member.image || "",
   };
 }
 
@@ -21,68 +25,109 @@ function mapImages(images) {
 
   return compact(
     images.map((image) => {
-      // Handle string URLs directly
       if (typeof image === "string") return image;
-      // Handle object formats { url: "...", src: "...", etc }
+
       if (image && typeof image === "object") {
         return image.url || image.src || image.logo || image.logo_url || "";
       }
+
       return "";
     })
   );
 }
 
-// --- Main Mapper ---
+function mapSessions(sessions = []) {
+  if (!Array.isArray(sessions)) return [];
+
+  return sessions.map((session) => ({
+    academicSession: session.academic_session || "",
+
+    clubPresident: mapMember(session.club_president),
+    clubSecretary: mapMember(session.club_secretary),
+
+    patnaCampusPi: mapPerson(session.patna_campus_pi),
+    bihtaCampusPi: mapPerson(session.bihta_campus_pi),
+  }));
+}
+
+// --------------------
+// Main Mapper
+// --------------------
 
 export function mapClubData(club = {}) {
-
-  if (!club || typeof club !== "object" || Object.keys(club).length === 0){
+  if (!club || typeof club !== "object" || Object.keys(club).length === 0) {
     return null;
   }
 
-
-  const name = club.name || club.club_name || "Club";
-  const slug = club.club_login_id || club.id;
-  const id = club.id || slug;
-  const logo = club.logo || club.logo_url || "";
+  const id = club.id;
+  const slug =  club.id;
+  const name = club.name || "Club";
+  const logo = club.logo || "";
 
   const gallery = mapImages(club.pictures);
+
   const patnaPi = mapPerson(club.patna_campus_pi);
   const bihtaPi = mapPerson(club.bihta_campus_pi);
+
+  const president = mapMember(club.club_president);
+  const secretary = mapMember(club.club_secretary);
 
   return {
     ...club,
     id,
     slug,
     clubId: id,
-    clubName: name,
+
     name,
-    email: club.email || club.club_email || "",
+    clubName: name,
+
+    email: club.email || "",
     category: club.category || "",
     status: club.status || "",
+
+    description: club.description || "",
+    about: club.about || "",
+
     logo,
     logoUrl: logo,
-    description: club.description || club.about || "",
-    about: club.about || club.description || "",
-    president: club.club_president || club.president || "",
-    secretary: club.club_secretary || club.secretary || "",
-    facultyCoordinator: club.facultyCoordinator || club.faculty_coordinator || "",
+
+    tagline: club.tagline || "",
+
+    // Office Bearers
+    president,
+    presidentName: president.name,
+    presidentImage: president.image,
+
+    secretary,
+    secretaryName: secretary.name,
+    secretaryImage: secretary.image,
+
+    // PI Details
     patnaPi,
     bihtaPi,
+
     patnaPiName: patnaPi.name,
     patnaPiEmail: patnaPi.email,
     patnaPiPhone: patnaPi.phone,
     patnaPiDepartment: patnaPi.department,
+    patnaPiImage: patnaPi.image,
+
     bihtaPiName: bihtaPi.name,
     bihtaPiEmail: bihtaPi.email,
     bihtaPiPhone: bihtaPi.phone,
     bihtaPiDepartment: bihtaPi.department,
+    bihtaPiImage: bihtaPi.image,
+
+    // Images
     gallery,
     pictures: gallery,
+    
+    createdAt: club.created_at || "",
+    updatedAt: club.updated_at || "",
   };
 }
 
 export function mapClubsData(clubs) {
-  if (!Array.isArray(clubs)) return [];
+  if (!Array.isArray(clubs)) return []
   return clubs.map(mapClubData);
 }

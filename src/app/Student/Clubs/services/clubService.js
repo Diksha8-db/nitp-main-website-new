@@ -5,9 +5,13 @@ const BACKEND_API_URL = process.env.NEXT_PUBLIC_BACKEND_API_URL;
 
 const REQUEST_TIMEOUT = 10000; // 10s
 
-function getClubApiUrl(type) {
+function getClubApiUrl() {
   const baseUrl = BACKEND_API_URL.replace(/\/$/, "");
-  return `${baseUrl}/api/club?type=${encodeURIComponent(type)}`;
+  return `${baseUrl}/api/club`;
+}
+function getClubApiUrlById(type) {
+  const baseUrl = BACKEND_API_URL.replace(/\/$/, "");
+  return `${baseUrl}/api/club?id=${encodeURIComponent(type)}`;
 }
 
 async function fetchWithTimeout(url, options = {}) {
@@ -42,12 +46,12 @@ async function fetchWithTimeout(url, options = {}) {
 export const getClubs = cache(async () => {
   try {
     const response = await fetchWithTimeout(
-      getClubApiUrl("all"),
+      getClubApiUrl(),
       {
-        next: { revalidate: 1800 },
+        next: { revalidate: 0 },
       }
     );
-    const data = await response.json();
+    const data = await response.json()    
     return mapClubsData(data);
 
   } catch (error) {
@@ -65,9 +69,9 @@ export const getClubBySlug = cache(async(slug) => {
 
   try {
     const response = await fetchWithTimeout(
-      getClubApiUrl(slug),
+      getClubApiUrlById(slug),
       {
-        next: { revalidate: 300 }, // 5 min cache
+        next: { revalidate:0 }, // 5 min cache
       }
     );
     const data = await response.json();
