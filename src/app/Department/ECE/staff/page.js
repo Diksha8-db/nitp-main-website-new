@@ -3,6 +3,8 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import NewStaffcardDept from "../../../components/faculty/NewStaffcardDept";
 
+// Desired display order of designations.
+// To change the order later, just reorder/add/remove entries in this array.
 const DESIGNATION_ORDER = [
   "Assistant Engineer (SG-II)",
   "Technical Assistant (SG-II)",
@@ -13,14 +15,19 @@ const DESIGNATION_ORDER = [
   "Technician",
 ];
 
+// Normalizes a designation string so minor differences (extra spaces,
+// casing) don't stop two staff with the "same" designation from matching.
 const normalize = (str) =>
   (str || "")
     .trim()
     .toLowerCase()
     .replace(/\s+/g, " ");
 
+// Pre-compute a normalized lookup so we only build it once.
 const NORMALIZED_ORDER = DESIGNATION_ORDER.map(normalize);
 
+// Sorts staff by DESIGNATION_ORDER. Designations not found in the list are
+// pushed to the end (in their original relative order).
 const sortByDesignation = (staff) => {
   const orderIndex = (designation) => {
     const index = NORMALIZED_ORDER.indexOf(normalize(designation));
@@ -32,13 +39,13 @@ const sortByDesignation = (staff) => {
   );
 };
 
-const ElectricalStaffpage = () => {
+const ECEStaffpage = () => {
   const [staffList, setStaffList] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
 
   useEffect(() => {
-    const fetchElectricalStaff = async () => {
+    const fetchECEStaff = async () => {
       try {
         setLoading(true);
         setError(false);
@@ -49,7 +56,7 @@ const ElectricalStaffpage = () => {
 
         do {
           const { data } = await axios.get(
-            `${process.env.NEXT_PUBLIC_BACKEND_API_URL}/api/staff2?type=all&department=ee&page=${page}&limit=50`
+            `${process.env.NEXT_PUBLIC_BACKEND_API_URL}/api/staff2?type=all&department=ece&page=${page}&limit=50`
           );
 
           allStaff.push(...data.data);
@@ -58,7 +65,7 @@ const ElectricalStaffpage = () => {
         } while (page <= totalPages);
 
         setStaffList(sortByDesignation(allStaff));
-        console.log("Fetched Electrical staff:", allStaff);
+        console.log("Fetched ECE staff:", allStaff);
       } catch (err) {
         console.log(err);
         setError(true);
@@ -67,7 +74,7 @@ const ElectricalStaffpage = () => {
       }
     };
 
-    fetchElectricalStaff();
+    fetchECEStaff();
   }, []);
 
   return (
@@ -81,7 +88,7 @@ const ElectricalStaffpage = () => {
           <p className="text-center text-gray-500 mt-6">Loading...</p>
         ) : error ? (
           <p className="text-center text-red-500 mt-6">
-            Sorry, failed to fetch the Electrical Engineering staff data.
+            Sorry, failed to fetch the ECE staff data.
           </p>
         ) : staffList.length === 0 ? (
           <p className="text-center text-gray-400 italic mt-6">
@@ -99,4 +106,4 @@ const ElectricalStaffpage = () => {
   );
 };
 
-export default ElectricalStaffpage;
+export default ECEStaffpage;
