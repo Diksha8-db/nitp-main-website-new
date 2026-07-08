@@ -14,10 +14,7 @@ const DESIGNATION_ORDER = [
 ];
 
 const normalize = (str) =>
-  (str || "")
-    .trim()
-    .toLowerCase()
-    .replace(/\s+/g, " ");
+  (str || "").trim().toLowerCase().replace(/\s+/g, " ");
 
 const NORMALIZED_ORDER = DESIGNATION_ORDER.map(normalize);
 
@@ -28,17 +25,17 @@ const sortByDesignation = (staff) => {
   };
 
   return [...staff].sort(
-    (a, b) => orderIndex(a.designation) - orderIndex(b.designation)
+    (a, b) => orderIndex(a.designation) - orderIndex(b.designation),
   );
 };
 
-const ElectricalStaffpage = () => {
+const MathematicsStaffpage = () => {
   const [staffList, setStaffList] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
 
   useEffect(() => {
-    const fetchElectricalStaff = async () => {
+    const fetchMathematicsStaff = async () => {
       try {
         setLoading(true);
         setError(false);
@@ -49,7 +46,7 @@ const ElectricalStaffpage = () => {
 
         do {
           const { data } = await axios.get(
-            `${process.env.NEXT_PUBLIC_BACKEND_API_URL}/api/staff2?type=all&department=ee&page=${page}&limit=50`
+            `${process.env.NEXT_PUBLIC_BACKEND_API_URL}/api/staff2?type=all&department=maths&page=${page}&limit=50`,
           );
 
           allStaff.push(...data.data);
@@ -58,7 +55,7 @@ const ElectricalStaffpage = () => {
         } while (page <= totalPages);
 
         setStaffList(sortByDesignation(allStaff));
-        console.log("Fetched Electrical staff:", allStaff);
+        console.log("Fetched Mathematics staff:", allStaff);
       } catch (err) {
         console.log(err);
         setError(true);
@@ -67,7 +64,7 @@ const ElectricalStaffpage = () => {
       }
     };
 
-    fetchElectricalStaff();
+    fetchMathematicsStaff();
   }, []);
 
   return (
@@ -81,7 +78,8 @@ const ElectricalStaffpage = () => {
           <p className="text-center text-gray-500 mt-6">Loading...</p>
         ) : error ? (
           <p className="text-center text-red-500 mt-6">
-            Sorry, failed to fetch the Electrical Engineering staff data.
+            Sorry, failed to fetch the Mathematics and Computing Technology
+            staff data.
           </p>
         ) : staffList.length === 0 ? (
           <p className="text-center text-gray-400 italic mt-6">
@@ -99,4 +97,4 @@ const ElectricalStaffpage = () => {
   );
 };
 
-export default ElectricalStaffpage;
+export default MathematicsStaffpage;
