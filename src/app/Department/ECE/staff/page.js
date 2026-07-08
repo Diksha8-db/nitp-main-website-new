@@ -39,13 +39,13 @@ const sortByDesignation = (staff) => {
   );
 };
 
-const ChemStaffpage = () => {
+const ECEStaffpage = () => {
   const [staffList, setStaffList] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
 
   useEffect(() => {
-    const fetchChemStaff = async () => {
+    const fetchECEStaff = async () => {
       try {
         setLoading(true);
         setError(false);
@@ -56,7 +56,7 @@ const ChemStaffpage = () => {
 
         do {
           const { data } = await axios.get(
-            `${process.env.NEXT_PUBLIC_BACKEND_API_URL}/api/staff2?type=all&department=che&page=${page}&limit=50`
+            `${process.env.NEXT_PUBLIC_BACKEND_API_URL}/api/staff2?type=all&department=ece&page=${page}&limit=50`
           );
 
           allStaff.push(...data.data);
@@ -65,7 +65,7 @@ const ChemStaffpage = () => {
         } while (page <= totalPages);
 
         setStaffList(sortByDesignation(allStaff));
-        console.log("Fetched Chem staff:", allStaff);
+        console.log("Fetched ECE staff:", allStaff);
       } catch (err) {
         console.log(err);
         setError(true);
@@ -74,7 +74,7 @@ const ChemStaffpage = () => {
       }
     };
 
-    fetchChemStaff();
+    fetchECEStaff();
   }, []);
 
   return (
@@ -88,7 +88,7 @@ const ChemStaffpage = () => {
           <p className="text-center text-gray-500 mt-6">Loading...</p>
         ) : error ? (
           <p className="text-center text-red-500 mt-6">
-            Sorry, failed to fetch the Chem staff data.
+            Sorry, failed to fetch the ECE staff data.
           </p>
         ) : staffList.length === 0 ? (
           <p className="text-center text-gray-400 italic mt-6">
@@ -106,4 +106,4 @@ const ChemStaffpage = () => {
   );
 };
 
-export default ChemStaffpage;
+export default ECEStaffpage;
