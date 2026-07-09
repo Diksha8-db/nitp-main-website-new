@@ -29,7 +29,7 @@ const RecruitmentProcess = () => {
   <tr className="border-b border-gray-100 hover:bg-red-50 transition-colors">
                 <td className="text-left px-6 py-4 text-gray-800">
                   <p className="leading-relaxed">
-                  Interview Schedule for Candidates Shortlisted for Stage-III in Various Departments 
+                  Interview Schedule for Candidates Who Became Eligible for Stage III in Various Departments
                   </p>
                 </td>
                 <td className="text-center px-6 py-4">
