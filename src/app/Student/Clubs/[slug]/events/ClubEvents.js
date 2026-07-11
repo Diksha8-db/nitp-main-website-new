@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import { CalendarDays, X, ChevronLeft, ChevronRight, Maximize2, ArrowRight } from "lucide-react";
+import { CalendarDays, X, ChevronLeft, ChevronRight, Maximize2, ArrowRight, Clock, MapPin } from "lucide-react";
 
 const ClubEvents = ({ clubEvents, club }) => {
   const router = useRouter();
@@ -81,6 +81,9 @@ const ClubEvents = ({ clubEvents, club }) => {
                     alt={event.title}
                     loading="lazy"
                     className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.01]"
+                    onError={(e) => {
+                      e.target.src = "/placeholder.svg";
+                    }}
                   />
 
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-950/40 via-transparent to-transparent opacity-60 transition-opacity duration-200" />
@@ -102,13 +105,31 @@ const ClubEvents = ({ clubEvents, club }) => {
 
                 {/* Event Meta Details Card */}
                 <div className="flex flex-col justify-between flex-1 p-5 space-y-4">
-                  <div className="space-y-1">
+                  <div className="space-y-2">
                     <h3 className="line-clamp-1 text-sm font-bold text-slate-800 transition-colors duration-200 tracking-tight">
                       {event.title}
                     </h3>
                     <p className="line-clamp-2 text-xs text-slate-700 leading-relaxed font-normal">
                       {event.description}
                     </p>
+                    
+                    {/* Event Metadata (Duration & Venue) */}
+                    {(event.duration || event.venue) && (
+                      <div className="flex flex-wrap gap-x-3 gap-y-1 text-[11px] text-slate-500 font-medium pt-1">
+                        {event.duration && (
+                          <div className="flex items-center gap-1">
+                            <Clock className="h-3.5 w-3.5 text-slate-400" />
+                            <span>{event.duration}</span>
+                          </div>
+                        )}
+                        {event.venue && (
+                          <div className="flex items-center gap-1">
+                            <MapPin className="h-3.5 w-3.5 text-slate-400" />
+                            <span className="line-clamp-1">{event.venue}</span>
+                          </div>
+                        )}
+                      </div>
+                    )}
                   </div>
 
                   <div className="pt-3 border-t border-slate-100 flex items-center justify-between text-[10px] font-bold uppercase tracking-wider text-red-600">

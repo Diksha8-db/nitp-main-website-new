@@ -8,7 +8,19 @@ import { useRouter } from "next/navigation";
 const EventDetailPage = ({ event }) => {
   const router = useRouter();
 
-  const images = event.gallery;
+  // Build images array from poster and gallery
+  const images = [];
+  if (event.poster) {
+    images.push(event.poster);
+  }
+  if (Array.isArray(event.gallery)) {
+    event.gallery.forEach((img) => {
+      if (img && img !== event.poster) {
+        images.push(img);
+      }
+    });
+  }
+
   const title = event.title || "Untitled Event";
 
   const [currentIdx, setCurrentIdx] = useState(0);
@@ -24,10 +36,12 @@ const EventDetailPage = ({ event }) => {
   }, []);
 
   const nextSlide = useCallback(() => {
+    if (images.length === 0) return;
     setCurrentIdx((prev) => (prev === images.length - 1 ? 0 : prev + 1));
   }, [images.length]);
 
   const prevSlide = useCallback(() => {
+    if (images.length === 0) return;
     setCurrentIdx((prev) => (prev === 0 ? images.length - 1 : prev - 1));
   }, [images.length]);
 
@@ -95,108 +109,112 @@ const EventDetailPage = ({ event }) => {
     }
   };
 
-  if (images.length === 0) {
-    return (
-      <div className="w-full h-[40vh] flex items-center justify-center bg-slate-50 rounded-2xl border border-dashed border-slate-200">
-        <div className="text-center space-y-2">
-          <ImageIcon className="h-8 w-8 text-slate-300 mx-auto" aria-hidden="true" />
-          <p className="text-slate-500 text-sm font-medium">
-            No media assets found for this event.
-          </p>
-        </div>
-      </div>
-    );
-  }
-
   return (
     <div className="w-full max-w-6xl mx-auto px-4 py-6 sm:px-6 lg:px-8 space-y-6 bg-slate-50/30 min-h-screen antialiased">
-      <div
-        role="region"
-        aria-label={`${title} image gallery`}
-        tabIndex={0}
-        onKeyDown={handleSliderKeyDown}
-        className="relative w-full aspect-[16/9] sm:aspect-[16/8] md:aspect-[16/7] max-h-[420px] rounded-xl border border-slate-200/70 bg-slate-950 overflow-hidden shadow-xl group transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500 focus-visible:ring-offset-2"
-        onMouseEnter={() => setIsPaused(true)}
-        onMouseLeave={() => setIsPaused(false)}
-      >
-        <div className="w-full h-full relative">
-          {images.map((imgUrl, idx) => (
-            <div
-              key={idx}
-              onClick={() => openFullscreen(idx)}
-              className={`absolute inset-0 transition-all duration-1000 ease-in-out cursor-pointer ${
-                idx === currentIdx
-                  ? "opacity-100 scale-100 pointer-events-auto"
-                  : "opacity-0 scale-100 pointer-events-none"
-              }`}
-            >
-              <img
-                src={imgUrl}
-                alt={`${title} slider view ${idx + 1}`}
-                loading={idx === 0 ? "eager" : "lazy"}
-                className="w-full h-full object-cover select-none object-center"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-slate-950/10 to-transparent" />
-            </div>
-          ))}
-        </div>
-
-        <div className="absolute top-4 left-4 z-10">
-          <span className="inline-flex items-center gap-1.5 rounded-xl bg-slate-900/70 backdrop-blur-md px-3 py-1.5 text-[11px] font-bold uppercase tracking-wider text-white border border-white/10 shadow-sm">
-            <Tag className="h-3 w-3 text-red-400" aria-hidden="true" />
-            {event.category}
-          </span>
-        </div>
-
-        {images.length > 1 && (
-          <>
-            <button
-              type="button"
-              aria-label="Previous image"
-              onClick={(e) => {
-                e.stopPropagation();
-                prevSlide();
-              }}
-              className="absolute left-4 top-1/2 -translate-y-1/2 h-9 w-9 flex items-center justify-center rounded-full bg-slate-900/40 backdrop-blur-sm text-white opacity-0 group-hover:opacity-100 focus-visible:opacity-100 transition duration-300 hover:bg-white hover:text-slate-900 shadow-md border border-white/10"
-            >
-              <ChevronLeft size={16} className="stroke-[2.5]" />
-            </button>
-            <button
-              type="button"
-              aria-label="Next image"
-              onClick={(e) => {
-                e.stopPropagation();
-                nextSlide();
-              }}
-              className="absolute right-4 top-1/2 -translate-y-1/2 h-9 w-9 flex items-center justify-center rounded-full bg-slate-900/40 backdrop-blur-sm text-white opacity-0 group-hover:opacity-100 focus-visible:opacity-100 transition duration-300 hover:bg-white hover:text-slate-900 shadow-md border border-white/10"
-            >
-              <ChevronRight size={16} className="stroke-[2.5]" />
-            </button>
-          </>
-        )}
-
-        {images.length > 1 && (
-          <div className="absolute bottom-4 left-6 z-10 flex items-center gap-1.5">
-            {images.map((_, idx) => (
-              <button
+      {/* GALLERY / BANNER CONTAINER */}
+      {images.length > 0 ? (
+        <div
+          role="region"
+          aria-label={`${title} image gallery`}
+          tabIndex={0}
+          onKeyDown={handleSliderKeyDown}
+          className="relative w-full aspect-[16/9] sm:aspect-[16/8] md:aspect-[16/7] max-h-[420px] rounded-xl border border-slate-200/70 bg-slate-950 overflow-hidden shadow-xl group transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500 focus-visible:ring-offset-2"
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+        >
+          <div className="w-full h-full relative">
+            {images.map((imgUrl, idx) => (
+              <div
                 key={idx}
-                type="button"
-                aria-label={`Go to image ${idx + 1}`}
-                aria-current={idx === currentIdx}
-                onClick={(e) => {
-                  e.stopPropagation();
-                  setCurrentIdx(idx);
-                }}
-                className={`h-1.5 rounded-full transition-all duration-500 ease-out ${
+                onClick={() => openFullscreen(idx)}
+                className={`absolute inset-0 transition-all duration-1000 ease-in-out cursor-pointer ${
                   idx === currentIdx
-                    ? "w-6 bg-white"
-                    : "w-1.5 bg-white/40 hover:bg-white/60"
+                    ? "opacity-100 scale-100 pointer-events-auto"
+                    : "opacity-0 scale-100 pointer-events-none"
                 }`}
-              />
+              >
+                <img
+                  src={imgUrl}
+                  alt={`${title} slider view ${idx + 1}`}
+                  loading={idx === 0 ? "eager" : "lazy"}
+                  className="w-full h-full object-cover select-none object-center"
+                  onError={(e) => {
+                    e.target.src = "/placeholder.svg";
+                  }}
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-slate-950/10 to-transparent" />
+              </div>
             ))}
           </div>
-        )}
-      </div>
+
+          <div className="absolute top-4 left-4 z-10">
+            <span className="inline-flex items-center gap-1.5 rounded-xl bg-slate-900/70 backdrop-blur-md px-3 py-1.5 text-[11px] font-bold uppercase tracking-wider text-white border border-white/10 shadow-sm">
+              <Tag className="h-3 w-3 text-red-400" aria-hidden="true" />
+              {event.category}
+            </span>
+          </div>
+
+          {images.length > 1 && (
+            <>
+              <button
+                type="button"
+                aria-label="Previous image"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  prevSlide();
+                }}
+                className="absolute left-4 top-1/2 -translate-y-1/2 h-9 w-9 flex items-center justify-center rounded-full bg-slate-900/40 backdrop-blur-sm text-white opacity-0 group-hover:opacity-100 focus-visible:opacity-100 transition duration-300 hover:bg-white hover:text-slate-900 shadow-md border border-white/10"
+              >
+                <ChevronLeft size={16} className="stroke-[2.5]" />
+              </button>
+              <button
+                type="button"
+                aria-label="Next image"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  nextSlide();
+                }}
+                className="absolute right-4 top-1/2 -translate-y-1/2 h-9 w-9 flex items-center justify-center rounded-full bg-slate-900/40 backdrop-blur-sm text-white opacity-0 group-hover:opacity-100 focus-visible:opacity-100 transition duration-300 hover:bg-white hover:text-slate-900 shadow-md border border-white/10"
+              >
+                <ChevronRight size={16} className="stroke-[2.5]" />
+              </button>
+            </>
+          )}
+
+          {images.length > 1 && (
+            <div className="absolute bottom-4 left-6 z-10 flex items-center gap-1.5">
+              {images.map((_, idx) => (
+                <button
+                  key={idx}
+                  type="button"
+                  aria-label={`Go to image ${idx + 1}`}
+                  aria-current={idx === currentIdx}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setCurrentIdx(idx);
+                  }}
+                  className={`h-1.5 rounded-full transition-all duration-500 ease-out ${
+                    idx === currentIdx
+                      ? "w-6 bg-white"
+                      : "w-1.5 bg-white/40 hover:bg-white/60"
+                  }`}
+                />
+              ))}
+            </div>
+          )}
+        </div>
+      ) : (
+        /* Fallback banner if there are no images at all */
+        <div className="relative w-full h-[180px] rounded-xl bg-gradient-to-r from-red-800 to-red-950 flex flex-col justify-end p-6 shadow-md overflow-hidden">
+          <div className="absolute inset-0 bg-slate-950/20" />
+          <div className="relative z-10">
+            <span className="inline-flex items-center gap-1.5 rounded-xl bg-slate-900/70 backdrop-blur-md px-3 py-1.5 text-[11px] font-bold uppercase tracking-wider text-white border border-white/10 shadow-sm">
+              <Tag className="h-3 w-3 text-red-400" aria-hidden="true" />
+              {event.category || "Event"}
+            </span>
+          </div>
+        </div>
+      )}
 
       {/* DETAILS BREAKDOWN BLOCK */}
       <div className="grid gap-6 grid-cols-1 lg:grid-cols-12 items-start">
@@ -366,6 +384,9 @@ const EventDetailPage = ({ event }) => {
               src={images[fullscreenImageIndex]}
               alt={`${title} zoomed view ${fullscreenImageIndex + 1}`}
               className="max-w-full max-h-[75vh] object-contain rounded-xl shadow-2xl"
+              onError={(e) => {
+                e.target.src = "/placeholder.svg";
+              }}
             />
             <div className="mt-4 text-center">
               <span className="text-white text-sm font-bold tracking-tight">{title}</span>
