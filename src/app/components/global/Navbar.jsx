@@ -65,13 +65,11 @@ import mech from "../../assets/images/mech.svg";
 import physics from "../../assets/images/physics.svg";
 import useNavigationEvent from "./useNavigationEvent";
 import { FiMenu } from "react-icons/fi";
-import { AiOutlineClose, AiOutlineMenu, AiOutlineOpen } from "react-icons/ai";
+import { AiOutlineClose ,AiOutlineMenu,AiOutlineOpen} from "react-icons/ai";
 import Script from "next/script";
-import { getClubs } from "../../Student/Clubs/services/clubService"
-
 //List of all nav items
 
-const BASE_NAV_ITEMS = [
+const navItems = [
   {
     label: <Image src={Home} alt="Home" width={20} height={20} />,
     link: "/",
@@ -473,7 +471,7 @@ const BASE_NAV_ITEMS = [
   {
     label: "Faculty & Staff",
     // link: "/Academic/Faculty&Staff",
-    link: "#",
+    link:"#",
     children: [
       {
         label: " Faculty Directory",
@@ -519,7 +517,7 @@ const BASE_NAV_ITEMS = [
       {
         label: "Holidays/Restricted Holidays ",
         // link: "https://drive.google.com/file/d/1qL_eR9y5y4uTz0dR0_woqFSv3sQNUhwD/view?usp=sharing",
-        link: "/Academic/Holidays",
+        link:"/Academic/Holidays",
         iconImage: International,
       },
     ],
@@ -528,7 +526,7 @@ const BASE_NAV_ITEMS = [
   {
     label: "Students",
     // link: "/Student",
-    link: "#",
+    link:"#",
     children: [
       // {
       //   label: "Dean Student Welfare",
@@ -556,8 +554,6 @@ const BASE_NAV_ITEMS = [
         label: "Clubs/Socities",
         link: "/Student/Clubs",
         iconImage: Clubs,
-        children: [], // starts empty; filled once API responds
-        _dynamicKey: "clubs",
       },
       {
         label: "Annual Sports Fest",
@@ -632,7 +628,7 @@ const BASE_NAV_ITEMS = [
   {
     label: "Facilities",
     // link: "/Facilities",
-    link: "#",
+    link:"#",
     children: [
       // {
       //   label: "Centers",
@@ -706,37 +702,10 @@ const BASE_NAV_ITEMS = [
   },
 ];
 
-// Index of the "Students" section in BASE_NAV_ITEMS
-const STUDENTS_NAV_INDEX = BASE_NAV_ITEMS.findIndex(i => i.label === "Students");
-// Index of "Clubs/Societies" inside Students.children
-const CLUBS_CHILD_INDEX = BASE_NAV_ITEMS[STUDENTS_NAV_INDEX].children.findIndex(
-  c => c._dynamicKey === "clubs"
-);
-
-/**
- * Returns a deep copy of BASE_NAV_ITEMS with the clubs children injected,
- * and the internal _dynamicKey marker removed before render.
- */
-function buildNavItems(clubChildren) {
-  const items = BASE_NAV_ITEMS.map((item, i) => {
-    if (i !== STUDENTS_NAV_INDEX) return item;
-
-    const newChildren = item.children.map((child, j) => {
-      if (j !== CLUBS_CHILD_INDEX) return child;
-      const { _dynamicKey, ...rest } = child;
-      return { ...rest, children: clubChildren.length > 0 ? clubChildren : undefined };
-    });
-    return { ...item, children: newChildren };
-  });
-  return items;
-}
-
-
 //main nav funtion
 export default function Navbar() {
   const [isSideMenuOpen, setSideMenuOpen] = useState(false);
   const [isSticky, setSticky] = useState(false);
-  const [navItems, setNavItems] = useState(() => buildNavItems([]));
   useNavigationEvent(() => setSideMenuOpen(false));
 
   useEffect(() => {
@@ -770,32 +739,6 @@ export default function Navbar() {
     };
     fixHindiInstituteName();
   }, []);
-
-    useEffect(() => {  //getting all clubs data to be dynamically updated
-      let mounted = false;
-  
-      async function fetchAndInjectClubs() {
-        try {
-          const clubs = await getClubs();
-          if (mounted || !Array.isArray(clubs) || clubs.length === 0) return;
-  
-          const clubChildren = clubs.map(club => ({
-            label: club.name,
-            link:  `/Student/Clubs/${club.id}`,
-            iconImage: club.logo || "",
-          }));
-  
-          setNavItems(buildNavItems(clubChildren));
-        } catch (err) {
-          if (process.env.NODE_ENV === "development") {
-            console.warn("[Navbar] Could not load clubs:", err.message);
-          }
-        }
-      }
-  
-      fetchAndInjectClubs();
-      return () => { mounted = true; };
-    }, []);
 
   return (
     <>
@@ -883,7 +826,7 @@ export default function Navbar() {
       </div>
 
       <div
-        className={`navbar-container sticky top-0 z-50 ${isSticky ? "stickdiv" : ""} `}
+        className={`navbar-container sticky top-0 z-50 ${isSticky?"stickdiv":""} `}
       >
         <div className="header-top mx-auto flex w-full max-w-9xl justify-between px-[1px] md:px-4 py-2 bg-white/40 backdrop-blur-lg shadow-lg">
           {/* Mobile Header Layout */}
@@ -927,7 +870,7 @@ export default function Navbar() {
           </div>
           <div className="hidden md:flex justify-center items-center transition-all duration-300 ease-in-out">
             <Link href="/">
-              <Image src={logo} alt="NIT PATNA" height={70} className="transition-all duration-500 ease-in-out" />
+              <Image src={logo} alt="NIT PATNA" height={70}  className="transition-all duration-500 ease-in-out"/>
             </Link>
           </div>
           <div className="institute-info pt-4 hidden text-center items-center justify-center md:block text-black">
@@ -947,7 +890,7 @@ export default function Navbar() {
         </div>
 
         {isSideMenuOpen && (
-          <MobileNav navItems={navItems} closeSideMenu={() => setSideMenuOpen(false)} />
+          <MobileNav closeSideMenu={() => setSideMenuOpen(false)} />
         )}
       </div>
     </>
@@ -977,8 +920,9 @@ function NavItem({ item }) {
       </Link>
       {item.children && (
         <div
-          className={`absolute right-0 top-10 w-auto flex-col gap-1 rounded-lg bg-white  shadow-md transition-all ${isOpen ? "flex" : "hidden"
-            } group`}
+          className={`absolute right-0 top-10 w-auto flex-col gap-1 rounded-lg bg-white  shadow-md transition-all ${
+            isOpen ? "flex" : "hidden"
+          } group`}
         >
           <div className="border-solid border-2 border-red-800 m-4 p-2 rounded-lg	bg-white shadow-red-500/30 shadow-md">
             {item.children.map((child, index) => (
@@ -1019,8 +963,9 @@ function DropdownItem({ item, parentLabel }) {
 
       {item.children && (
         <div
-          className={`absolute left-full top-0  w-auto flex-col gap-1 rounded-lg shadow-md transition-all  bg-neutral-200 md:bg-neutral-100 ${isSOpen ? "flex" : "hidden"
-            }`}
+          className={`absolute left-full top-0  w-auto flex-col gap-1 rounded-lg shadow-md transition-all  bg-neutral-200 md:bg-neutral-100 ${
+            isSOpen ? "flex" : "hidden"
+          }`}
         >
           <div className="border-solid border-2 border-red-800 m-4 p-2 rounded-lg	">
             {item.children.map((subChild, subIndex) => (
@@ -1030,9 +975,7 @@ function DropdownItem({ item, parentLabel }) {
                 className="flex cursor-pointer items-center py-1 pl-6 pr-8 text-black md:text-neutral-900 hover:text-red-900 hover:bg-red-100"
               >
                 {subChild.iconImage && (
-                  typeof subChild.iconImage === "string" && subChild.iconImage.startsWith("http")
-                    ? <img src={subChild.iconImage} alt="item-icon" width={20} height={20} className="object-contain" />
-                    : <Image src={subChild.iconImage} alt="item-icon" width={20} height={20} />
+                  <Image src={subChild.iconImage} alt="item-icon" />
                 )}
                 <span className="whitespace-nowrap pl-3">{subChild.label}</span>
               </Link>
@@ -1043,7 +986,7 @@ function DropdownItem({ item, parentLabel }) {
     </div>
   );
 }
-function MobileNav({ navItems, closeSideMenu }) {
+function MobileNav({ closeSideMenu }) {
   return (
     <div className="mobile-nav text-black">
       <div className="mobile-nav-content text-black">
@@ -1053,7 +996,7 @@ function MobileNav({ navItems, closeSideMenu }) {
         />
         <div className="flex flex-col text-base gap-2 transition-all ">
           {navItems.map((item, index) => (
-            <SingleNavItem key={index} item={item} closeSideMenu={closeSideMenu} />
+            <SingleNavItem key={index} item={item} onClick={closeSideMenu} />
           ))}
         </div>
       </div>
@@ -1072,7 +1015,7 @@ function SingleNavItem({ item, closeSideMenu }) {
         className="flex cursor-pointer items-center gap-2 text-neutral-900 group-hover:text-black"
       >
         {item.iconImage && <Image src={item.iconImage} alt="item-icon" />}
-        <Link href={item.link ?? "#"} onClick={closeSideMenu}>
+        <Link href={"#"} onClick={closeSideMenu}>
           {item.label}
         </Link>
         {item.children && (
@@ -1082,11 +1025,11 @@ function SingleNavItem({ item, closeSideMenu }) {
         )}
       </p>
       {isItemOpen && item.children && (
-        <div className="w-auto flex-col gap-1  bg-neutral-50 py-3 transition-all flex">
+        <p className="w-auto flex-col gap-1  bg-neutral-50 py-3 transition-all flex">
           {item.children.map((child, index) => (
-            <SubSidemenu key={index} item={child} closeSideMenu={closeSideMenu} />
+            <SubSidemenu key={index} item={child} />
           ))}
-        </div>
+        </p>
       )}
     </div>
   );
@@ -1110,27 +1053,26 @@ function SubSidemenu({ item, closeSideMenu }) {
         </Link>
         {item.children && (
           <IoIosArrowDown
-            className={`text-xs transition-all ${isSubItemOpen ? "rotate-180" : ""}`}
+            className={`text-xs transition-all ${
+              isSubItemOpen && "rotate-180"
+            } `}
           />
         )}
       </p>
       {isSubItemOpen && item.children && (
         <div className="w-auto flex-col gap-1 bg-white py-1 transition-all text-sm">
           {item.children.map((subChild, index) => (
-            <div key={index} className="flex items-center gap-2 pl-4">
-              {subChild.iconImage && (
-                typeof subChild.iconImage === "string" && subChild.iconImage.startsWith("http")
-                  ? <img src={subChild.iconImage} alt="item-icon" width={20} height={20} className="object-contain" />
-                  : <Image src={subChild.iconImage} alt="item-icon" />
+            <p key={index} className="flex pl-4">
+              {item.iconImage && (
+                <Image src={subChild.iconImage} alt="item-icon" />
               )}
               <Link
                 href={subChild.link ?? "#"}
-                className="flex cursor-pointer items-center py-1 text-neutral-700 hover:text-black"
-                onClick={closeSideMenu}
+                className="flex cursor-pointer items-center py-1 text-neutral-700 hover:text-black pl-1"
               >
                 <span>{subChild.label}</span>
               </Link>
-            </div>
+            </p>
           ))}
         </div>
       )}
@@ -1139,6 +1081,6 @@ function SubSidemenu({ item, closeSideMenu }) {
         src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"
       ></Script>
     </div>
-
+    
   );
 }
