@@ -202,12 +202,12 @@ const admissionData = {
       //   content: " UG Admission",
       //   href: "https://drive.google.com/file/d/1wUoxMAfqSBmz1-E7j8QvFK_Ywgcb-JoC/view?usp=sharing"
       // },
-      // {
-      //   title: "List of provisionally shortlisted Candidates for admission through Study in India (SII) for the session 2025-26 at NIT Patna.",
-      //   date: "2025-06-30",
-      //   content: "List of provisionally shortlisted Candidates for admission through Study in India (SII) for the session 2025-26 at NIT Patna.",
-      //   href: "https://drive.google.com/file/d/1cPyNk71PmxjLQ1qkgHCuLDv1EvyhYWi5/view?usp=sharing"
-      // },
+      {
+        title: "List of provisionally shortlisted Candidates for admission through Study in India (SII) for the session 2026-27 at NIT Patna.",
+        date: "2026-07-10",
+        content: "List of provisionally shortlisted Candidates for admission through Study in India (SII) for the session 2026-27 at NIT Patna.",
+        href: "https://drive.google.com/file/d/1AWfyiP_za1HQTqomsDpU11Gg8AFg8JZX/view?usp=sharing"
+      },
       {
         title: "Schedule for the Admission through Study in India (SII) at NIT Patna for the Academic Year 2026-27",
         date: "2026-06-10",
