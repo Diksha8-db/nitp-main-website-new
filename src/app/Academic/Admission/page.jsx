@@ -91,17 +91,17 @@ const admissionData = {
        // href: "https://drive.google.com/file/d/1rpNmcxqzTfzoonelUydZLel6bMEZ-K_k/view"
       },
       // {
-      //   title: "Physical reporting notice for admission to M.Tech/M.Arch/MURP through CCMT 2025 and DRDO Sponsored candidates",
-      //   date: "2025-07-24",
+      //   title: "Physical reporting notice for admission to M.Tech/M.Arch/MURP through CCMT 2026 and DRDO Sponsored candidates",
+      //   date: "2026-07-14",
       //   content: "PG Admission",
-      //   href: "https://drive.google.com/file/d/1FctrG7liIhq3rQO7ViRKYFrs6PYeAjFh/view?usp=sharing"
+      //   href: "https://drive.google.com/file/d/18Lc9u6HkJeD7tp3ROjmF_hBGorxKN4OY/view?usp=sharing"
       // },
-      // {
-      //   title: "Physical reporting schedule for admission to PG Programme through CCMT and NIMCET for the Academic year 2025-26",
-      //   date: "2025-07-10",
-      //   content: "PG Admission",
-      //   href: "https://drive.google.com/file/d/1xUpA4rWNtrHlTEzRxI_AEwHPjkyIzN5z/view"
-      // }
+      {
+        title: "Physical Verification notice for admission to M.Tech/MURP through CCMT 2026",
+        date: "2026-07-14",
+        content: "PG Admission",
+        href: "https://drive.google.com/file/d/18Lc9u6HkJeD7tp3ROjmF_hBGorxKN4OY/view?usp=sharing"
+      }
     ]
   },
 
