@@ -84,12 +84,7 @@ const admissionData = {
       },
     ],
     notices: [
-      {
-        title: "Uploaded Soon",
-        date: "2026-05-29",
-        content: "Uploaded Soon",
-       // href: "https://drive.google.com/file/d/1rpNmcxqzTfzoonelUydZLel6bMEZ-K_k/view"
-      },
+  
       // {
       //   title: "Physical reporting notice for admission to M.Tech/M.Arch/MURP through CCMT 2026 and DRDO Sponsored candidates",
       //   date: "2026-07-14",
@@ -102,6 +97,13 @@ const admissionData = {
         content: "PG Admission",
         href: "https://drive.google.com/file/d/18Lc9u6HkJeD7tp3ROjmF_hBGorxKN4OY/view?usp=sharing"
       }
+      {
+        title: "Fee Structre for 2026-27 Batch",
+        date: "2026-07-15",
+        content: "PG Admission",
+        href: "https://drive.google.com/file/d/1pnEtbYSy_OTSn98MkZivpOYXfwD_sP0S/view?usp=sharing"
+      },
+      
     ]
   },
 
