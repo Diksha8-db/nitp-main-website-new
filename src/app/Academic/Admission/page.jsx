@@ -29,6 +29,7 @@ const admissionData = {
         link: "https://josaa.nic.in",
         description: "Visit the portal for the Information Brochure, Schedule, Opening and Closing Ranks, Seat Matrix, and other relevant details."
       },
+      
       {
         name: "DASA",
         image: "https://dasanit.org/dasa2025/images/dasa_new.png",
@@ -96,7 +97,7 @@ const admissionData = {
         date: "2026-07-14",
         content: "PG Admission",
         href: "https://drive.google.com/file/d/18Lc9u6HkJeD7tp3ROjmF_hBGorxKN4OY/view?usp=sharing"
-      }
+      },
       {
         title: "Fee Structre for 2026-27 Batch",
         date: "2026-07-15",
