@@ -512,7 +512,7 @@ const BTechSyllabusold = () => {
         <SyllabusComp
           dep={"CSUG"}
           sem={"7"}
-          code={"CS74124"}
+          code={"CS74125"}
           title={"Industrial Training"}
           L={"X"}
           T={"X"}
