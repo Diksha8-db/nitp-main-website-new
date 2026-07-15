@@ -29,6 +29,7 @@ const admissionData = {
         link: "https://josaa.nic.in",
         description: "Visit the portal for the Information Brochure, Schedule, Opening and Closing Ranks, Seat Matrix, and other relevant details."
       },
+      
       {
         name: "DASA",
         image: "https://dasanit.org/dasa2025/images/dasa_new.png",
