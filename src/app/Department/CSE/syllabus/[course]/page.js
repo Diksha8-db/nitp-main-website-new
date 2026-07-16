@@ -545,7 +545,7 @@ const BTechSyllabusold = () => {
         <SyllabusComp
           dep={"CSUG"}
           sem={"8"}
-          code={"CS84126"}
+          code={"CS84127"}
           title={"Comprehensive Viva-Voce"}
           L={"X"}
           T={"X"}
