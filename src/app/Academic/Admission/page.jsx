@@ -17,12 +17,12 @@ import { usePathname } from "next/navigation";
 const admissionData = {
   btech: {
     portals: [
-      // {
-      //   name: "SOP and Admission Form link for the Academic Year 2025 admissions",
-      //   image: "https://mis.nitp.ac.in/admission/images/Header.jpg",
-      //   link: "https://mis.nitp.ac.in/admission/Default.aspx",
-      //   sopLink: "https://drive.google.com/file/d/1pmD3CpyFUdmyhIEmr3YtdSqgakAUl6jA/view"
-      // },
+      {
+        name: "SOP and Admission Form link for the Academic Year 2026 admissions",
+        image: "https://mis.nitp.ac.in/admission/images/Header.jpg",
+        link: "https://mis.nitp.ac.in/admission/Default.aspx",
+        sopLink: "https://drive.google.com/file/d/1PdsHeOkaeAvIWvQMeZFCTkQzsAf-LuX6/view?usp=sharing"
+      },
       {
         name: "JoSAA",
         image: "https://cdnbbsr.s3waas.gov.in/s313111c20aee51aeb480ecbd988cd8cc9/uploads/2022/09/2022091261.png",
@@ -71,12 +71,12 @@ const admissionData = {
   },
   mtech: {
     portals: [
-      // {
-      //   name: "SOP and Admission Form link for the Academic Year 2025 admissions",
-      //   image: "https://mis.nitp.ac.in/admission/images/Header.jpg",
-      //   link: "https://mis.nitp.ac.in/admission/Default.aspx",
-      //   sopLink: "https://drive.google.com/file/d/1pmD3CpyFUdmyhIEmr3YtdSqgakAUl6jA/view"
-      // },
+      {
+        name: "SOP and Admission Form link for the Academic Year 2026 admissions",
+        image: "https://mis.nitp.ac.in/admission/images/Header.jpg",
+        link: "https://mis.nitp.ac.in/admission/Default.aspx",
+        sopLink: "https://drive.google.com/file/d/1PdsHeOkaeAvIWvQMeZFCTkQzsAf-LuX6/view?usp=sharing"
+      },
        {
         name: "CCMT",
         image: "https://cdnbbsr.s3waas.gov.in/s301894d6f048493d2cacde3c579c315a3/uploads/2022/02/2022022590.png",
@@ -142,12 +142,12 @@ const admissionData = {
 
   mca: {
     portals: [
-      // {
-      //   name: "SOP and Admission Form link for the Academic Year 2025 admissions",
-      //   image: "https://mis.nitp.ac.in/admission/images/Header.jpg",
-      //   link: "https://mis.nitp.ac.in/admission/Default.aspx",
-      //   sopLink: "https://drive.google.com/file/d/1pmD3CpyFUdmyhIEmr3YtdSqgakAUl6jA/view"
-      // },
+      {
+        name: "SOP and Admission Form link for the Academic Year 2026 admissions",
+        image: "https://mis.nitp.ac.in/admission/images/Header.jpg",
+        link: "https://mis.nitp.ac.in/admission/Default.aspx",
+        sopLink: "https://drive.google.com/file/d/1PdsHeOkaeAvIWvQMeZFCTkQzsAf-LuX6/view?usp=sharing"
+      },
       {
         name: "NIMCET",
         image: "https://cdnbbsr.s3waas.gov.in/s33e6260b81898beacda3d16db379ed329/uploads/2025/03/2025031961.png",
@@ -185,12 +185,12 @@ const admissionData = {
 
   study_in_india: {
     portals: [
-      // {
-      //   name: "SOP and Admission Form link for the Academic Year 2025 admissions",
-      //   image: "https://mis.nitp.ac.in/admission/images/Header.jpg",
-      //   link: "https://mis.nitp.ac.in/admission/Default.aspx",
-      //   sopLink: "https://drive.google.com/file/d/1pmD3CpyFUdmyhIEmr3YtdSqgakAUl6jA/view"
-      // },
+      {
+        name: "SOP and Admission Form link for the Academic Year 2026 admissions",
+        image: "https://mis.nitp.ac.in/admission/images/Header.jpg",
+        link: "https://mis.nitp.ac.in/admission/Default.aspx",
+        sopLink: "https://drive.google.com/file/d/1PdsHeOkaeAvIWvQMeZFCTkQzsAf-LuX6/view?usp=sharing"
+      },
       // {
       //   name: "Study in India",
       //   image: "https://studyinindia.gov.in/Content/images/logo_SII_new_2023_darkGlobe1.webp",
