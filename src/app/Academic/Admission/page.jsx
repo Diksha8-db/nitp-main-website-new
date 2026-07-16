@@ -99,7 +99,7 @@ const admissionData = {
         href: "https://drive.google.com/file/d/18Lc9u6HkJeD7tp3ROjmF_hBGorxKN4OY/view?usp=sharing"
       },
       {
-        title: "Fee Structre for 2026-27 Batch",
+        title: "Fee Structre",
         date: "2026-07-15",
         content: "PG Admission",
         href: "https://drive.google.com/file/d/1pnEtbYSy_OTSn98MkZivpOYXfwD_sP0S/view?usp=sharing"
@@ -157,17 +157,23 @@ const admissionData = {
     ],
     notices: [
       {
-        title: "Uploaded Soon",
-        date: "2026-05-29",
-        content: "Uploaded Soon",
-        // href: "https://drive.google.com/file/d/1rpNmcxqzTfzoonelUydZLel6bMEZ-K_k/view"
+        title: "Physical reporting notice for admission to MCA through  NIMCET-2026",
+        date: "2026-07-16",
+        content: "Physical reporting notice for admission to MCA through  NIMCET-2026",
+        href: "https://drive.google.com/file/d/1nBQudzAYVjiuNkL8AGHG3iwAhbPrI_Tn/view?usp=sharing"
       },
-      // {
-      //   title: "Physical reporting notice for admission to MCA through  NIMCET-2025",
-      //   date: "2025-07-23",
-      //   content: "Physical reporting notice for admission to MCA through  NIMCET-2025",
-      //   href: "https://drive.google.com/file/d/1wlBUzmL-ZFq8-_4_uG20qtQFEp0qGUEo/view?usp=sharing"
-      // },
+        {
+        title: "Fee Structure ",
+        date: "2026-07-16",
+        content: "Fee Structure",
+        href: "https://drive.google.com/file/d/1AMDgWbxCCpoY43auIROB7WdtJFm64yIw/view?usp=sharing"
+      },
+        {
+        title: "Fee Structure for Self Finance",
+        date: "2026-07-16",
+        content: "Fee Structure for Self Finance",
+        href: "https://drive.google.com/file/d/1_fT2Wb_ouSIeke-jx-BK5wcarjgsbWxH/view?usp=sharing"
+      }
       // {
       //   title: "Physical reporting schedule for admission to PG Programme through CCMT and NIMCET for the Academic year 2025-26",
       //   date: "2025-07-10",
