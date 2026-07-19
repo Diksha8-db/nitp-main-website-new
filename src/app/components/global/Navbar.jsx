@@ -779,11 +779,14 @@ export default function Navbar() {
           const clubs = await getClubs();
           if (mounted || !Array.isArray(clubs) || clubs.length === 0) return;
   
-          const clubChildren = clubs.map(club => ({
-            label: club.name,
-            link:  `/Student/Clubs/${club.id}`,
-            iconImage: club.logo || "",
-          }));
+          const clubChildren = clubs.map(club => {
+            const isInactive = club.status && club.status.toLowerCase() === "inactive";
+            return {
+              label: isInactive ? `${club.name} (Inactive)` : club.name,
+              link:  `/Student/Clubs/${club.id}`,
+              iconImage: club.logo || logo,
+            };
+          });
   
           setNavItems(buildNavItems(clubChildren));
         } catch (err) {
