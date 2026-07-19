@@ -1600,8 +1600,8 @@ const BTechSyllabus = () => {
           sem={"2"}
           code={"HS020601"}
           title={"Professional Communication and Technical Writing"}
-          L={"3"}
-          T={"0"}
+          L={"2"}
+          T={"1"}
           P={"2"}
           cred={"4"}
           url="https://docs.google.com/document/d/1WFanmrrgwFgtGvrGdGSMskPE-LHwhaSD/edit?usp=drive_link&ouid=107956080350583320778&rtpof=true&sd=true"
@@ -8103,8 +8103,8 @@ const   DualDSyllabus = () => {
           sem={"2"}
           code={"HS020801"}
           title={"Professional Communication and Technical Writing"}
-          L={"3"}
-          T={"0"}
+          L={"2"}
+          T={"1"}
           P={"2"}
           cred={"4"}
           url={"https://docs.google.com/document/d/14oZxmoldG81-cTQgAsQM0rs3TaAry9kW/edit?usp=drive_link&ouid=107956080350583320778&rtpof=true&sd=true"}
