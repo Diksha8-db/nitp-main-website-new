@@ -17,18 +17,19 @@ import { usePathname } from "next/navigation";
 const admissionData = {
   btech: {
     portals: [
-      // {
-      //   name: "SOP and Admission Form link for the Academic Year 2025 admissions",
-      //   image: "https://mis.nitp.ac.in/admission/images/Header.jpg",
-      //   link: "https://mis.nitp.ac.in/admission/Default.aspx",
-      //   sopLink: "https://drive.google.com/file/d/1pmD3CpyFUdmyhIEmr3YtdSqgakAUl6jA/view"
-      // },
+      {
+        name: "SOP and Admission Form link for the Academic Year 2026 admissions",
+        image: "https://mis.nitp.ac.in/admission/images/Header.jpg",
+        link: "https://mis.nitp.ac.in/admission/Default.aspx",
+        sopLink: "https://drive.google.com/file/d/1PdsHeOkaeAvIWvQMeZFCTkQzsAf-LuX6/view?usp=sharing"
+      },
       {
         name: "JoSAA",
         image: "https://cdnbbsr.s3waas.gov.in/s313111c20aee51aeb480ecbd988cd8cc9/uploads/2022/09/2022091261.png",
         link: "https://josaa.nic.in",
         description: "Visit the portal for the Information Brochure, Schedule, Opening and Closing Ranks, Seat Matrix, and other relevant details."
       },
+      
       {
         name: "DASA",
         image: "https://dasanit.org/dasa2025/images/dasa_new.png",
@@ -37,7 +38,20 @@ const admissionData = {
       },
     ],
     notices: [
-      // {
+      {
+        title: "Admissions AY 2026–27 | CSAB Special Rounds & DASA (UG) Admissions",
+        date: "2026-07-20",
+        content: " UG Admission",
+        href: "https://drive.google.com/file/d/1Jod0hJqfxAX4wYT3wWxU67T1iQw9UhO4/view?usp=sharing"
+      },
+      {
+        title: "Fee Structre",
+        date: "2026-07-20",
+        content: "UG Admission",
+        href: "https://drive.google.com/file/d/1krBrlVqdOMlvzz5t7mMmW5mqmecGbLQH/view?usp=sharing"
+      },
+      
+      //     {
       //   title: "Admission link is live (18/08/2025; 3 PM to 23/08/2025) for those who have confirmed their seat during JoSAA-2025 counselling and have not participated in CSAB special Round. Same Admission link will be used for those who have participated in CSAB special round and confirmed their seat during CSAB special round from live from 20/08/2025 to 23/08/2025.",
       //   date: "2025-08-18",
       //   content: " UG Admission",
@@ -55,12 +69,12 @@ const admissionData = {
       //   content: "UG Admission",
       //   href: "https://drive.google.com/file/d/1Nd4LmG-jk-L-H4SoV9lH2uTzww_pHM21/view?usp=sharing"
       // },
-      // {
-      //   title: "Physical reporting schedule for admission to UG Programme through JoSAA/CSAB/DASA/SII for the Academic year 2025-26",
-      //   date: "2025-07-10",
-      //   content: "UG Admission",
-      //   href: "https://drive.google.com/file/d/1Evk3oz1InhdbUPRK9isTvncuXhBT7P4I/view"
-      // }
+      {
+        title: "Physical reporting schedule for admission to UG Programme through JoSAA/CSAB/DASA/SII for the Academic year 2026-27",
+        date: "2026-07-20",
+        content: "UG Admission",
+        href: "https://drive.google.com/file/d/1i8x0a5taSUYaSsnlgus7wlc_Tqsa1jG1/view?usp=sharing"
+      }
       // {
       //   title: "DASA 2023 Important Dates",
       //   date: "2023-05-20",
@@ -70,12 +84,12 @@ const admissionData = {
   },
   mtech: {
     portals: [
-      // {
-      //   name: "SOP and Admission Form link for the Academic Year 2025 admissions",
-      //   image: "https://mis.nitp.ac.in/admission/images/Header.jpg",
-      //   link: "https://mis.nitp.ac.in/admission/Default.aspx",
-      //   sopLink: "https://drive.google.com/file/d/1pmD3CpyFUdmyhIEmr3YtdSqgakAUl6jA/view"
-      // },
+      {
+        name: "SOP and Admission Form link for the Academic Year 2026 admissions",
+        image: "https://mis.nitp.ac.in/admission/images/Header.jpg",
+        link: "https://mis.nitp.ac.in/admission/Default.aspx",
+        sopLink: "https://drive.google.com/file/d/1PdsHeOkaeAvIWvQMeZFCTkQzsAf-LuX6/view?usp=sharing"
+      },
        {
         name: "CCMT",
         image: "https://cdnbbsr.s3waas.gov.in/s301894d6f048493d2cacde3c579c315a3/uploads/2022/02/2022022590.png",
@@ -84,24 +98,26 @@ const admissionData = {
       },
     ],
     notices: [
-      {
-        title: "Uploaded Soon",
-        date: "2026-05-29",
-        content: "Uploaded Soon",
-       // href: "https://drive.google.com/file/d/1rpNmcxqzTfzoonelUydZLel6bMEZ-K_k/view"
-      },
+  
       // {
-      //   title: "Physical reporting notice for admission to M.Tech/M.Arch/MURP through CCMT 2025 and DRDO Sponsored candidates",
-      //   date: "2025-07-24",
+      //   title: "Physical reporting notice for admission to M.Tech/M.Arch/MURP through CCMT 2026 and DRDO Sponsored candidates",
+      //   date: "2026-07-14",
       //   content: "PG Admission",
-      //   href: "https://drive.google.com/file/d/1FctrG7liIhq3rQO7ViRKYFrs6PYeAjFh/view?usp=sharing"
+      //   href: "https://drive.google.com/file/d/18Lc9u6HkJeD7tp3ROjmF_hBGorxKN4OY/view?usp=sharing"
       // },
-      // {
-      //   title: "Physical reporting schedule for admission to PG Programme through CCMT and NIMCET for the Academic year 2025-26",
-      //   date: "2025-07-10",
-      //   content: "PG Admission",
-      //   href: "https://drive.google.com/file/d/1xUpA4rWNtrHlTEzRxI_AEwHPjkyIzN5z/view"
-      // }
+      {
+        title: "Physical Verification notice for admission to M.Tech/MURP through CCMT 2026",
+        date: "2026-07-14",
+        content: "PG Admission",
+        href: "https://drive.google.com/file/d/18Lc9u6HkJeD7tp3ROjmF_hBGorxKN4OY/view?usp=sharing"
+      },
+      {
+        title: "Fee Structre",
+        date: "2026-07-15",
+        content: "PG Admission",
+        href: "https://drive.google.com/file/d/1pnEtbYSy_OTSn98MkZivpOYXfwD_sP0S/view?usp=sharing"
+      },
+      
     ]
   },
 
@@ -139,12 +155,12 @@ const admissionData = {
 
   mca: {
     portals: [
-      // {
-      //   name: "SOP and Admission Form link for the Academic Year 2025 admissions",
-      //   image: "https://mis.nitp.ac.in/admission/images/Header.jpg",
-      //   link: "https://mis.nitp.ac.in/admission/Default.aspx",
-      //   sopLink: "https://drive.google.com/file/d/1pmD3CpyFUdmyhIEmr3YtdSqgakAUl6jA/view"
-      // },
+      {
+        name: "SOP and Admission Form link for the Academic Year 2026 admissions",
+        image: "https://mis.nitp.ac.in/admission/images/Header.jpg",
+        link: "https://mis.nitp.ac.in/admission/Default.aspx",
+        sopLink: "https://drive.google.com/file/d/1PdsHeOkaeAvIWvQMeZFCTkQzsAf-LuX6/view?usp=sharing"
+      },
       {
         name: "NIMCET",
         image: "https://cdnbbsr.s3waas.gov.in/s33e6260b81898beacda3d16db379ed329/uploads/2025/03/2025031961.png",
@@ -154,17 +170,23 @@ const admissionData = {
     ],
     notices: [
       {
-        title: "Uploaded Soon",
-        date: "2026-05-29",
-        content: "Uploaded Soon",
-        // href: "https://drive.google.com/file/d/1rpNmcxqzTfzoonelUydZLel6bMEZ-K_k/view"
+        title: "Physical reporting notice for admission to MCA through  NIMCET-2026",
+        date: "2026-07-16",
+        content: "Physical reporting notice for admission to MCA through  NIMCET-2026",
+        href: "https://drive.google.com/file/d/1nBQudzAYVjiuNkL8AGHG3iwAhbPrI_Tn/view?usp=sharing"
       },
-      // {
-      //   title: "Physical reporting notice for admission to MCA through  NIMCET-2025",
-      //   date: "2025-07-23",
-      //   content: "Physical reporting notice for admission to MCA through  NIMCET-2025",
-      //   href: "https://drive.google.com/file/d/1wlBUzmL-ZFq8-_4_uG20qtQFEp0qGUEo/view?usp=sharing"
-      // },
+        {
+        title: "Fee Structure ",
+        date: "2026-07-16",
+        content: "Fee Structure",
+        href: "https://drive.google.com/file/d/1AMDgWbxCCpoY43auIROB7WdtJFm64yIw/view?usp=sharing"
+      },
+        {
+        title: "Fee Structure for Self Finance",
+        date: "2026-07-16",
+        content: "Fee Structure for Self Finance",
+        href: "https://drive.google.com/file/d/1_fT2Wb_ouSIeke-jx-BK5wcarjgsbWxH/view?usp=sharing"
+      }
       // {
       //   title: "Physical reporting schedule for admission to PG Programme through CCMT and NIMCET for the Academic year 2025-26",
       //   date: "2025-07-10",
@@ -176,12 +198,12 @@ const admissionData = {
 
   study_in_india: {
     portals: [
-      // {
-      //   name: "SOP and Admission Form link for the Academic Year 2025 admissions",
-      //   image: "https://mis.nitp.ac.in/admission/images/Header.jpg",
-      //   link: "https://mis.nitp.ac.in/admission/Default.aspx",
-      //   sopLink: "https://drive.google.com/file/d/1pmD3CpyFUdmyhIEmr3YtdSqgakAUl6jA/view"
-      // },
+      {
+        name: "SOP and Admission Form link for the Academic Year 2026 admissions",
+        image: "https://mis.nitp.ac.in/admission/images/Header.jpg",
+        link: "https://mis.nitp.ac.in/admission/Default.aspx",
+        sopLink: "https://drive.google.com/file/d/1PdsHeOkaeAvIWvQMeZFCTkQzsAf-LuX6/view?usp=sharing"
+      },
       // {
       //   name: "Study in India",
       //   image: "https://studyinindia.gov.in/Content/images/logo_SII_new_2023_darkGlobe1.webp",
