@@ -38,7 +38,13 @@ const admissionData = {
       },
     ],
     notices: [
-      // {
+      {
+        title: "Admissions AY 2026–27 | CSAB Special Rounds & DASA (UG) Admissions",
+        date: "2026-07-20",
+        content: " UG Admission",
+        href: "https://drive.google.com/file/d/1Jod0hJqfxAX4wYT3wWxU67T1iQw9UhO4/view?usp=sharing"
+      },
+      //     {
       //   title: "Admission link is live (18/08/2025; 3 PM to 23/08/2025) for those who have confirmed their seat during JoSAA-2025 counselling and have not participated in CSAB special Round. Same Admission link will be used for those who have participated in CSAB special round and confirmed their seat during CSAB special round from live from 20/08/2025 to 23/08/2025.",
       //   date: "2025-08-18",
       //   content: " UG Admission",
