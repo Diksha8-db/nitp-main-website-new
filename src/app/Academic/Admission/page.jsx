@@ -62,12 +62,12 @@ const admissionData = {
       //   content: "UG Admission",
       //   href: "https://drive.google.com/file/d/1Nd4LmG-jk-L-H4SoV9lH2uTzww_pHM21/view?usp=sharing"
       // },
-      // {
-      //   title: "Physical reporting schedule for admission to UG Programme through JoSAA/CSAB/DASA/SII for the Academic year 2025-26",
-      //   date: "2025-07-10",
-      //   content: "UG Admission",
-      //   href: "https://drive.google.com/file/d/1Evk3oz1InhdbUPRK9isTvncuXhBT7P4I/view"
-      // }
+      {
+        title: "Physical reporting schedule for admission to UG Programme through JoSAA/CSAB/DASA/SII for the Academic year 2026-27",
+        date: "2026-07-20",
+        content: "UG Admission",
+        href: "https://drive.google.com/file/d/1i8x0a5taSUYaSsnlgus7wlc_Tqsa1jG1/view?usp=sharing"
+      }
       // {
       //   title: "DASA 2023 Important Dates",
       //   date: "2023-05-20",
